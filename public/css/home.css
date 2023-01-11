@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+/* Documento css para página home */
+@font-face {
+    font-family: NotoSansJP-Bold;
+    src: url('./fonts/NotoSansJP-Bold.otf');
+    font-family: NotoSansJP-Ligth;
+    src: url('./fonts/NotoSansJP-Light.otf');
+}
+
+.divLogin {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    box-shadow: rgb(50, 56, 56);   
+    color: #05c6d4 ;
+    
+}
+
+.divLoginCaixa {
+   
+    border-style: solid;
+    border:0.5;
+    border-color: rgba(106, 122, 128, 0.308);
+    padding: 5vh;
+    font-family: NotoSansJP-Ligth;
+   
+}
+input {
+color: #0a081a;
+
+}
+
+
+.btEntrar :hover {
+    background-color: rgba(95, 158, 160, 0.603);
+}
+
+.btExtra {
+    background-color: rgba(95, 158, 160, 0.603);
+}
+

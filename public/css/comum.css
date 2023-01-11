@@ -1,0 +1,26 @@
+table{
+    display: none;
+    max-width: 100%;
+    /* overflow: scroll */
+}
+
+table  tr{
+    font-size: 0.8rem;
+}
+
+.painelForm{
+    background:#21252981;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.center-align {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

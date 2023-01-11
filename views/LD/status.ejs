@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css.map"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/home.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/comum.css"  media="screen,projection"/>
+   
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class=" blue-grey darken-3">
+   Status
+    <div class="row m-5">
+        <div class="col-2 center" > <img width="100" height="100" src="/img/status.png"> </div>
+        <div class="col-6 "><h1>Status LD</h1></div>
+        <div class="col-4">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item list-group-item-primary"><h1><a href="/principal"><i class="material-icons">home</i></a></h1></li>
+            <li class="list-group-item list-group-item-primary"><h1><a href="/LD"><i class="material-icons">arrow_back</i></a></h1></li>
+           
+          </ul>          
+        </div>
+    </div>
+    <div class="row">
+        <div class="container ">
+            <div class="row divLoginCaixa z-depth-3">
+              <div class=" col s12">
+
+                <div class="row">
+                    <div class="col-2 ">
+                        
+                        <a class="btn-floating btn-large waves-effect waves-light cyan darken-4" onclick="limparFormulario()"  data-toggle="modal" data-target="#modalIncluir"><i class="material-icons">add</i></a>
+ 
+                    </div>
+                    <div class="col-10">
+                        <label>Pesquisar</label>
+                        <input type="text" id="pesquisaStatus" name="pesquisaStatus">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 container" >
+                        <div class="row">
+                            <div class=" col-12">
+                              <table id="tabelaStatus" name='tabelaStatus' class=" amber-text text-lighten-4 table-striped highlight table-hover  centered tbStatus">
+                                <thead id="cabecalhotbUsuario" name='cabecalhotbUsuario'>
+                                    <th>ID</th>
+                                    <th>Status</th>
+                                    <th>Editar</th>
+                                    <th>EXCLUIR</th>
+                                </thead>
+                                 <tbody id="corpoTabela" name='corpoTabela'>
+
+                                 </tbody> 
+                                
+                              </table>
+                            </di>
+
+                        </div>
+                       
+                      </div>
+                    </div>
+                    <div class="col-8 z-depth-4" id="conteudoStatus" style="display:none">
+                      <div class="row">
+                        <div class="col-10 container">
+                          <h4 class="amber-text text-lighten-4 ">Relatório e Indicadores : Usuario <span id="cabecalhoUW"></span> </h4>
+                        </div>
+                        <div onclick="sairPainelUW()" class="col-2">X</div>
+                      </div>
+                      <div class="row">
+                        <di class=" col-12" >
+                          <table id="tabelaStatus" name='tabelaStatus' class="amber-text text-lighten-4 table-striped highlight table-hover responsive-table centered tbStatus">
+                            <thead id="cabecalhotbUsuario" name='cabecalhotbUsuario'>
+                                <th>ID</th>
+                                <th>Descrição</th>
+                                <th>INCLUIR</th>
+                                <th>EDITAR</th>
+                                <th>EXCLUIR</th>
+                            </thead>
+                              <tbody id="corpoTabelaStatus" name='corpoTabelaStatus'>
+
+                             </tbody>  
+                            
+                          </table>
+                        </div>
+
+                    </div>
+                    </div>
+               
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="container ">
+          <!-- <div class="row divLoginCaixa z-depth-3"> -->
+            <div class=" col s12">
+              <a href="/LD"> 
+                <div class="row divLoginCaixa z-depth-3">
+                
+                  <div class="container ">
+                            
+                      <span >Voltar</span>
+                
+                   </div> 
+                </div>
+             </a>
+            </div>
+          <!-- </div> -->
+      </div>
+    </div>
+        <footer class="footer container">
+           Footer     
+        </footer>
+
+
+
+    <!-- Modals -->
+
+    <!-- Formulario Inclusao -->
+    <div class="modal fade painelForm" id="modalIncluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cadastro Status LD:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <form id="formStatus" name="formStatus" action="/ld/status/incluir" method="POST">
+              <div class="modal-body">
+              
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input  id="descricao" name="descricao" type="text" class="validate">
+                      <label class="active" for="descricao">Status</label>
+                    </div>
+                  </div>
+
+            </form>
+            <div class="modal-footer">
+              <div class="row container">
+                  <div  class="col-6 center-align"> 
+                    <span id="divMsg" class="flow-text deep-orange-text text-darken-4"></span>
+                </div>
+                <div class="col-3">
+                
+                  <button type="button" name="segundo" id="segundo" data-dismiss="modal" class="close btn btn-secondary" >Sair</button>
+
+                </div>
+                <div  class="col-3">
+                  <button id="gravar" type='button' class="btn btn-primary">Gravar </button>
+                </div>
+
+              </div>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <!-- Formulario Alteração -->
+    <div class="modal fade painelForm" id="modalAlterar" tabindex="-1" role="dialog" aria-labelledby="ModalAlteracao" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalAlteracao">Alterar  Status:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <form id="formAlterarStatusLD" name="formAlterarStatusLD" action="/LD/Status/Alterar" method="POST">
+              <div class="modal-body">
+              
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input type="hidden" name="idStatusAlterar" id="idStatusAlterar" value="">
+                      <!-- <i class="material-icons prefix">account_circle</i> -->
+                      <h3 id="StatusAlterar" style="font-style: oblique;"></h3>
+                      <label class="active" for="status">Status</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">edit</i>
+                      <input  id="descricaoAlteracao" name="descricaoAlteracao" type="text" class="validate">
+                      <!-- <label class="active" for="descricaoAlteracao">Status</label> -->
+                    </div>
+                  </div>
+
+            </form>
+            <div class="modal-footer">
+              <div class="row container">
+                  <div  class="col-6 center-align"> 
+                    <span id="divMsg" class="flow-text deep-orange-text text-darken-4"></span>
+                </div>
+                <div class="col-3">
+                
+                  <button type="button" name="segundo" id="segundo" data-dismiss="modal" class="close btn btn-secondary" >Sair</button>
+
+                </div>
+                <div  class="col-3">
+                  <button  onclick="alteracaoStatus()" type='button' class="btn btn-primary">Gravar </button>
+                </div>
+
+              </div>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.slim.min.js"  ></script>
+    <script type="text/javascript" src="/js/popper.min.js"  ></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="/js/axios.js"></script>
+    <script type="text/javascript" src="/js/LD/controleStatusLD.js"></script>
+    <script type="text/javascript" src="/js/config.js"></script>
+    <script>
+        $(document).ready(function() {
+          M.updateTextFields();
+        });
+    </script>
+  </body>
+</html>

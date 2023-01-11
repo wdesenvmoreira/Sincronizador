@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css.map"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/home.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/comum.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/ld.css"  media="screen,projection"/>
+   
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class=" blue-grey darken-3">
+
+    <div class="row m-5">
+        <div class="col-4 center" > <img width="100" height="100" src="/img/Itens.png"> </div>
+        <div class="col-4 amber-text text-lighten-4 "><h1>Saldo Itens LD</h1></div>
+        <div class="col-2">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item blue-grey darken-3"><a href="/principal"><i class="material-icons">home</i></a></li>
+            <li class="list-group-item blue-grey darken-3"><a href="/LD"><i class="material-icons">arrow_back</i></a></li>
+           
+          </ul>          
+        </div>
+       
+    </div>
+    <div class="row container center">
+
+                    <div class="col-4 ">
+                        <label class="amber-text text-lighten-4 " >Produto</label>
+                        <input type="text" id="codProduto" class="amber-text text-lighten-4 " name="codProduto">
+                    </div>
+                    <div class="col-2 ">
+                        
+                      <a class="btn-floating btn-large waves-effect waves-light cyan darken-4" onclick="pesquisarItensRecolhimento()" ><i class="material-icons">search</i></a>
+
+                  </div>
+
+    </div>
+
+                        <div class="row container"> 
+                            <div class=" col-8">
+
+                              <blockquote  class="amber-text text-lighten-4 ">
+                                <p id="captionTabela" ></p>
+                              </blockquote>
+                              <table id="tabelaItem" name='tabelaItem' class=" amber-text text-lighten-4 table-striped highlight table-hover responsive-table centered tbRecolhimento">
+                                <colgroup>
+                                  <col>
+                                  <col  class="assistencia">
+                                  
+                                </colgroup>
+                                <thead id="cabecalhotbItem" name='cabecalhotbItem'>
+                                    <th  nowrap="true">Código Item</th>
+                                    <th>Descrição Item</th>
+                                    <th>Variação</th>
+                                    <th>Acabamento</th>
+                                    <th nowrap="true" class=" yellow-text text-lighten-3">Aguardando</th>
+                                    <th nowrap="true" class=" green-text text-accent-3">Concertando</th>
+                                    <th nowrap="true" class=" brown-text text-lighten-2">Estoque</th>
+                                    <th nowrap="true" >Total</th>
+                                </thead>
+                                 <tbody id="corpoTabela" name='corpoTabela'>
+                                  
+                                 </tbody> 
+                          
+                              </table>
+                            </di>
+
+                        </div>
+                       
+                      </div>
+
+        
+    </div>
+    
+    <!-- Modals -->
+
+    <!-- Formulario Inclusao -->
+    <div class="modal fade painelForm" id="modalSaidaQtd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sainda de Produto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <form id="formItemSaida" name="formItemSaida" action="/api/saldo/saida" method="POST">
+              <div class="modal-body">
+              
+                  <div class="row">
+                    <div class="input-field col s6" style="align-items: flex-end;">
+                      <i class="material-icons prefix">weekend</i>
+                      <span  id="item" name="item" type="text" class="validate"></span>>
+                      <label class="active" for="item"><span id="itemSaida" ></span></label>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="input-field col s6" style="align-items: flex-start;">
+                         Disponível: <label><h1 id="disponivel" ></h1></label>
+                      </div>
+                      <div class="input-field col s6" style="align-items: flex-start;">
+                        <input type="hidden" id="qtdDisponivel" value="">
+                        <input type="hidden" id="itemSaldo" value="">
+                         Quantidade Saida: <input  id="quantidade" name="quantidade" type="text" class="validate">
+                      
+                    </div>
+                  </div>
+                  
+               
+              </div>
+            </form>
+            <div class="modal-footer">
+              <div class="row container">
+      
+                <div class="col-3">
+                
+                  <button type="button" name="segundo" id="segundo" data-dismiss="modal" class="close btn btn-secondary" >Sair</button>
+
+                </div>
+                <div  class="col-3">
+                  <button id="gravarSaidaEstoque" type='button' class="btn btn-primary">Gravar </button>
+                </div>
+                <div  class="col-6 "> 
+                  <span id="divMsg" class="flow-text deep-orange-text text-darken-4"></span>
+              </div>
+              </div>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+
+    <!-- Formulario Alteração -->
+    <div class="modal fade painelForm" id="modalAlterar" tabindex="-1" role="dialog" aria-labelledby="ModalAlteracao" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalAlteracao">Alterar  Senha:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <form id="formAlterarRecolhimento" name="formAlterarRecolhimento" action="/Recolhimento/novasenha" method="POST">
+              <div class="modal-body">
+              
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input type="hidden" name="idRecolhimentoAlterar" id="idRecolhimentoAlterar" value="">
+                      <!-- <i class="material-icons prefix">account_circle</i> -->
+                      <h3 id="recolhimentoAlterar" style="font-style: oblique;"></h3>
+                      <label class="active" for="recolhimento">Usuário</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">vpn_key</i>
+                      <input  id="novasenha" name="novasenha" type="password" class="validate">
+                      <label class="active" for="senha">Senha</label>
+                    </div>
+                  </div>
+                  
+
+                  <div class="row"><span style="margin-right: 10px;">Editar: </span>
+                    <div class="switch">
+                      <label>
+                          Não
+                          <input id="edicalAlteracaoRecolhimento" type="checkbox">
+                          <span class="lever"></span>
+                          Sim
+                      </label>
+                  </div>
+
+              </div>
+            </form>
+            <div class="modal-footer">
+              <div class="row container">
+                  <div  class="col-6 center-align"> 
+                    <span id="divMsg" class="flow-text deep-orange-text text-darken-4"></span>
+                </div>
+                <div class="col-3">
+                
+                  <button type="button" name="segundo" id="segundo" data-dismiss="modal" class="close btn btn-secondary" >Sair</button>
+
+                </div>
+                <div  class="col-3">
+                  <button  onclick="alteracaoRecolhimento()" type='button' class="btn btn-primary">Gravar </button>
+                </div>
+
+              </div>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.slim.min.js"  ></script>
+    <script type="text/javascript" src="/js/popper.min.js"  ></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="/js/axios.js"></script>
+    <script type="text/javascript" src="/js/LD/controleItemSaldoLD.js"></script>
+    <script type="text/javascript" src="/js/config.js"></script>
+    <script>
+        $(document).ready(function() {
+          M.updateTextFields();
+        });
+    </script>
+  </body>
+</html>

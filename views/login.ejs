@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/home.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class=" blue-grey darken-3">
+    <div class="container divLogin">
+      <div class="row divLoginCaixa z-depth-3">
+        <div class=" col s12">
+          <form action="/auth" method="POST" class="col s12">
+
+            <div class="row">
+              <div class="input-field col s12">
+                <h6>USUÁRIO</h6>
+                <input id="username" name="username" type="text" class="validate">
+                
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <h6>SENHA</h6>
+                <input id="password" name="password" type="password" class="validate">
+               
+              </div>
+            </div>
+            
+        </div>
+        <div class="row btMenu ">
+          <div class="col s6 ">
+            <div class="container">
+             <input type="submit" value="Entre" />
+              
+            </div>
+          </div> </form>
+            <div class=" col s6">
+              <div class="container">
+                <a class="waves-effect btExtra  btn"><i class="material-icons left"></i>options</a>
+                
+              </div>
+           </div>
+         </div>
+         <div class="row">
+            <div class=" s6">
+                <div class="container">
+                  <span class="message"><%= message%></span>
+                </div>
+            </div>
+         </div>
+      </div>
+     
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>

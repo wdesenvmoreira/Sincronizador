@@ -1,0 +1,7 @@
+{
+    'faturamento30dias':{
+        'titulo': 'Faturamento nos Ultimos 30 Dias',
+        'sql':'select * from documento_fatura docfat where docfat '
+        'status':'ATIVO'
+    }
+}
